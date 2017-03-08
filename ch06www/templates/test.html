@@ -1,0 +1,25 @@
+<!-- carlist.html (ch06www project) -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Test Page</title>
+</head>
+<body>
+    {% autoescape on %}
+    {{msg}}
+    {% endautoescape %}
+{% load humanize %}
+{{ now | date:"h:m:s" }}
+{{ value | divisibleby:3}}
+{{ value | filesizeformat }}
+{{ values | first }}
+Random: {{ values | random | intcomma}}
+Slugify: {{ msg | slugify }}
+
+{{ answer | yesno:"是, 否, 可能吧"}}
+
+<hr>
+{% lorem 1 p random %}
+</body>
+</html>

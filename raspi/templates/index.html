@@ -1,0 +1,41 @@
+<!-- index.html (raspi.tw project) -->
+{% extends "base.html" %}
+{% block title %}二級網址免費申請{% endblock %}
+{% block content %}
+<div class='container'>
+{% for message in messages %}
+    <div class='alert alert-{{message.tags}}'>{{ message }}</div>
+{% endfor %}
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align=center>
+                    <h3>二級網址免費申請</h3>
+                    {% if user.is_authenticated %}
+                        Welcome: {{ user.username }}
+                    {% endif %}
+                </div>
+                <div class='panel-body'>
+                    <h4>本站特色</h4>
+                    <ul>
+                        <li>完全免費</li>
+                        <li>每個帳戶可以申請1個raspi.tw二級網址</li>
+                        <li>使用<a href='https://dnsimple.com/r/1613ef54c6cbbc?account_id=53186'>DNSimple</a>，反應速度超快，申請完之後可馬上使用</li>
+                        <li>配合作者的Python新手架站的16堂課一書，以及<a href='https://m.do.co/c/c7690bc827a5'>Digital Ocean VPS主機</a>，讓您快速架站不煩惱！</li>
+                    </ul>
+                    <br>
+                    <h4>本網站服務條款</h4>
+                    <ol>
+                        <li>本網站永久免費使用</li>
+                        <li>站長有隨時終本網站服務的權利</li>
+                        <li>請勿把本網址用於不法或是可能違反網站正常運作的行為，如發現以上的行為，站長有權停止該用戶的使用權限</li>
+                        <li>站長盡力維護網站的安全性，但如因本站造成使用者之損失，本站不負任何的責任</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

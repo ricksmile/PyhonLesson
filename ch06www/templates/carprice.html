@@ -1,0 +1,40 @@
+<!-- carlist.html (ch06www project) -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>二手車賣場</title>
+</head>
+<body>
+    {% load humanize %}
+    <h2>歡迎光臨DJ二手車賣場，現有庫存車價格表</h2>
+    <table>
+        <tr>
+    {% for m in car_maker %}
+        <td bgcolor="#ccffcc">
+            <a href="{% url 'carprice-url' forloop.counter0 %}">{{m}}</a>
+        </td>
+    {% endfor %}
+        </tr>
+    </table>
+
+    {% for c in cars %}
+        {% if forloop.first %}
+    <table>
+        <tr><td>車廠</td><td>車款</td><td>車價</tr>
+        {% endif %}
+        <tr bgcolor="{% cycle '#eeeeee' '#cccccc' %}">
+        <td>{{maker_name}}</td>
+        <td>{{ c.model }}</td>
+        <td align='right'>NT${{ c.price | floatformat:2 | intcomma }}
+        </tr>
+        {% if forloop.last %}
+    </table>
+        {% endif %}
+    {% empty %}
+        <h3>車廠<em>{{maker_name}}</em>目前無庫存車</h3>
+    {% endfor %}
+    <hr>
+    {% now 'D M Y h:m:s a'%}
+</body>
+</html>
